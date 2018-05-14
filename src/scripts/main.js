@@ -20,13 +20,13 @@ function init() {
 
     console.log('INIT CALLED');
 
-    const minister = oContainer.dataset.minister;
+    const contentName = oContainer.dataset.contentname;
     //const au = new Audio();
     const scroller = new ScrollControl();
 
     const dg = new DomGenerator();
 
-    dg.build(config[minister].file, function(scenes) {
+    dg.build(config[contentName].file, function(scenes) {
         scroller.setupScroll(vid, scenes);
         //au.initAudio();
     });
@@ -34,7 +34,7 @@ function init() {
 }
 function getVideo() {
     oContainer = select('#outerContainer');
-    const minister = oContainer.dataset.minister;
+    const minister = oContainer.dataset.contentname;
 
     videoSetup = {
         frameCount : parseInt(config[minister].frameCount),

@@ -4,10 +4,10 @@ export default class Configs{
 	}
 	static content(){
 		return {
-			'Merkel': {
+			'Mord': {
 				frameCount: 690,
 				frameRate: 15,
-				file: 'merkel.json',
+				file: 'mord.json',
 				pathNames:{
 					mobilePath:'merkel-mobil/',
 					mobileFileName:'merkel-mobil-00000',
