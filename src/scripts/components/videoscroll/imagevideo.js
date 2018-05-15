@@ -3,7 +3,7 @@ import {create, select, normalize, clamp, linearInterpolate, imagePath} from '..
 export default class ImageVideo {
     constructor(videoSetup) {
         this.setup = videoSetup;
-        this.debug = false;
+        this.debug = true;
         //let videoContainer = select('#videoContainer');
         let imageContainer = select('#image-container');
 
@@ -30,6 +30,7 @@ export default class ImageVideo {
             let im = {
                 id: i,
                 tag: create('img'),
+                highres:'',
                 load: function (s) {
                     this.tag.src = s;
                 }
@@ -51,8 +52,11 @@ export default class ImageVideo {
             if(debugTime < 10) pre = '0';
             this.debugCounter.innerHTML = pre + debugTime.toFixed(2);
         }
-        this.currentFrame = Math.round(linearInterpolate(norm, 0, this.setup.frameCount));
-        this.drawImage();
+        let newFrame = Math.round(linearInterpolate(norm, 0, this.setup.frameCount));
+        if(newFrame !== this.currentFrame){
+            this.currentFrame = newFrame;
+            this.drawImage();
+        }
     }
 
     drawImage() {
@@ -60,7 +64,9 @@ export default class ImageVideo {
 
         this.imageEl.src = this.images[clamp(this.currentFrame, 0, this.setup.frameCount - 1)].tag.src;
     }
-
+    showHighRes(){
+        this.imageEl.src = this.images[clamp(this.currentFrame, 0, this.setup.frameCount - 1)].highres;
+    }
     loadImages(callback = ()=>{console.log('empty callback')}) {
 
         this.loadCallback = callback;
@@ -70,13 +76,27 @@ export default class ImageVideo {
         this.showPreloadMessage(0);
 
         this.loadedImages = 0;
-        let file = (this.setup.videoSize === 'small') ? {path:this.setup.pathNames.mobilePath, name:this.setup.pathNames.mobileFileName}: {path:this.setup.pathNames.desktopPath, name:this.setup.pathNames.desktopFileName};
+        let file = (this.setup.videoSize === 'small') ? {
+            path:this.setup.pathNames.mobilePathLowres, 
+            name:this.setup.pathNames.mobileFileNameLowres,
+            highresPath:this.setup.pathNames.mobilePath, 
+            highresName:this.setup.pathNames.mobileFileName
+        }: {
+            path:this.setup.pathNames.desktopPathLowres, 
+            name:this.setup.pathNames.desktopFileNameLowres,
+            highresPath:this.setup.pathNames.desktopPath, 
+            highresName:this.setup.pathNames.desktopFileName
+        };
         // console.log('load images', size, file.path);
         for (let i = 0; i < this.setup.frameCount; ++i) {
             let pre = file.name;
+            let highPre = file.highresName;
             let post = i.toString();
             let name = pre.substr(0, pre.length - post.length) + post + '.jpg';
+
+            let highresName = highPre.substr(0, highPre.length - post.length) + post + '.jpg';
             // this.images[i].load('//www.dr.dk/tjenester/visuel/staging/drn-primeminister-scroller/' + file.path+name);
+            this.images[i].highres = imagePath + file.highresPath + highresName;
             this.images[i].load(imagePath + file.path+name);
         }
     }

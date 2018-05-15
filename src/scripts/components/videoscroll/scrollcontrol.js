@@ -2,6 +2,7 @@ import {create, select, normalize, clamp, easeOutIn} from '../../utils/trix-util
 import ScrollDevices from './scrolldevices';
 
 import ScrollMagic from 'scrollmagic';
+import { setTimeout, clearTimeout } from 'timers';
 
 export default class ScrollControl{
 	constructor(){
@@ -12,6 +13,8 @@ export default class ScrollControl{
 		this.videoBreakpoint = 500,
 
 		this.savedWidth = window.innerWidth;
+
+
 
 		let oContainer = select('#outerContainer');
 		const sContainer = select('#videoScrollContainer');
@@ -42,7 +45,8 @@ export default class ScrollControl{
 
 			})
 			.on('progress', (e) => {
-/*				console.log(e.scrollDirection);
+				/*				
+				console.log(e.scrollDirection);
 				if(e.scrollDirectio == "REVERSE"){
 					e.preventDefault();
 				}
@@ -79,12 +83,21 @@ export default class ScrollControl{
 			offset: this.scrollduration
 		}).addTo(controller);
 */
+		let scrollTimeout = null;
 		let counter = new ScrollMagic.Scene({
 			duration: this.scrollduration
 		}).addTo(controller);
-
-		counter.on("update", (ev) => {
+		
+		counter.on('update', (ev) => {
 			this.setTime(ev.scrollPos);
+			if(scrollTimeout !== null) {
+				clearTimeout(scrollTimeout);
+			}
+			scrollTimeout = setTimeout(()=>{
+				console.log('scrolling stopped');
+				this.video.showHighRes();
+			}, 150)
+
 		});
 
 		let indicator = create('div', sContainer);
@@ -100,7 +113,6 @@ export default class ScrollControl{
 		let norm = normalize(pos, 0, this.scrollduration);
 		let scrollTime = (this.video.setup.frameCount * norm);
 		this.video.setVideoTime(scrollTime);
-
 	}
 	checkSizeChange() {
 		console.log('size change');

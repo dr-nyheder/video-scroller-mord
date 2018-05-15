@@ -5,14 +5,18 @@ export default class Configs{
 	static content(){
 		return {
 			'Mord': {
-				frameCount: 690,
+				frameCount: 1059,
 				frameRate: 15,
 				file: 'mord.json',
 				pathNames:{
-					mobilePath:'merkel-mobil/',
-					mobileFileName:'merkel-mobil-00000',
-					desktopPath:'merkel-desktop/',
-					desktopFileName:'merkel-desktop-00000'
+					mobilePath:'mord-mobil/',
+					mobileFileName:'mord-mobil-00000',
+					desktopPath:'mord-desktop/',
+					desktopFileName:'mord-desktop-00000',
+					mobilePathLowres:'mord-mobil-low-res/',
+					mobileFileNameLowres:'mord-mobil-low-res-00000',
+					desktopPathLowres:'mord-desktop-low-res/',
+					desktopFileNameLowres:'mord-desktop-low-res-00000'
 				}
 			}
 		}
