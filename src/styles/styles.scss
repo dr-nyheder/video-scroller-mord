@@ -1,42 +1,7 @@
-  @font-face{
-    font-family:"gibsonLight";
-    src:url("https://www.dr.dk/assets/fonts/gibson/light/gibson-light-webfont.eot");
-    src:url("https://www.dr.dk/assets/fonts/gibson/light/gibson-light-webfont.eot?#iefix") format("embedded-opentype"),
-    url("https://www.dr.dk/assets/fonts/gibson/light/gibson-light-webfont.woff2") format("woff2"),
-    url("https://www.dr.dk/assets/fonts/gibson/light/gibson-light-webfont.woff") format("woff"),
-    url("https://www.dr.dk/assets/fonts/gibson/light/gibson-light-webfont.ttf") format("truetype"),
-    url("https://www.dr.dk/assets/fonts/gibson/light/gibson-light-webfont.svg") format("svg");
-    font-weight:normal;
-  }
-  @font-face{
-    font-family:"gibsonSemiBold";
-    src:url("https://www.dr.dk/assets/fonts/gibson/semiBold/gibson-semiBold-webfont.eot");
-    src:url("https://www.dr.dk/assets/fonts/gibson/semiBold/gibson-semiBold-webfont.eot?#iefix") format("embedded-opentype"),
-    url("https://www.dr.dk/assets/fonts/gibson/semiBold/gibson-semiBold-webfont.woff2") format("woff2"),
-    url("https://www.dr.dk/assets/fonts/gibson/semiBold/gibson-semiBold-webfont.woff") format("woff"),
-    url("https://www.dr.dk/assets/fonts/gibson/semiBold/gibson-semiBold-webfont.ttf") format("truetype"),
-    url("https://www.dr.dk/assets/fonts/gibson/semiBold/gibson-semiBold-webfont.svg") format("svg");
-    font-weight:normal}
-    @font-face {
-      font-family: "gibsonRegular";
-      src: url("https://www.dr.dk/assets/fonts/gibson/regular/gibson-regular-webfont.eot");
-      src: url("https://www.dr.dk/assets/fonts/gibson/regular/gibson-regular-webfont.eot?#iefix") format("embedded-opentype"),
-      url("https://www.dr.dk/assets/fonts/gibson/regular/gibson-regular-webfont.woff2") format("woff2"),
-      url("https://www.dr.dk/assets/fonts/gibson/regular/gibson-regular-webfont.woff") format("woff"),
-      url("https://www.dr.dk/assets/fonts/gibson/regular/gibson-regular-webfont.ttf") format("truetype"),
-      url("https://www.dr.dk/assets/fonts/gibson/regular/gibson-regular-webfont.svg") format("svg");
-      font-weight: normal;
-    }
-    html{
-     margin:0px;
-     height:100%;
-   }
-   body{
-    background: #0E0A11;
-    margin:1px;
-    height:100%;
-  //background: linear-gradient(90deg, #361313,#2E1340 40%, #0E0A11);
-}
+$loaderColor:rgba(255, 71, 71, 0.7);
+$headerColor:#d01403;
+$addressColor:#FFC8C8;
+$textColor:#FFFFFF;
 .debug-counter{
   position: fixed;
   top:50px;
@@ -89,12 +54,12 @@
   margin:25vw auto;
   width:20vw;
   height:1vw;
-  border: 1px solid rgba(255, 254, 71, 0.7);
+  border: 1px solid $loaderColor;
   padding: 2px;
   border-radius: 1vw;
   .progress{
     border-radius: 1vw;
-    background-color: rgba(255, 254, 71, 0.7);
+    background-color: $loaderColor;
     width:1%;
     height:100%;
   }
@@ -115,36 +80,53 @@
   height:100%;
   max-height: calc(56.25vw - 10px);
   overflow-y:hidden; 
-  //padding-top: 56.75%;
   position: fixed;
-  //top: 40px;
   pointer-events: none;
-  //bottom:1vw !important;
   opacity: 1 !important;
 
 }
 .scene {
-  width: 40%;
+  background:rgba(0, 0, 0, 0.8);
+  width: 70%;
   opacity: 0;
   //height:10%;
   position: absolute;
   text-align: center;
   //bottom: -25px;
+  padding: 5% 5% 5% 5%;
+  margin: 0 10%;
   bottom: -10vh;
-  left:10%;
+  // left:10%;
   font-family: gibsonRegular;
+  .icon{
+    margin:0 auto 1.2em auto;
+    width:10%;
+    img{
+      width:100%;
+    }
+  }
   .main{
-    color: #d8d54c;
-    font-size: 1.7vw;
+    color: $textColor;
+    font-size: 1.8vw;
     line-height: 1.5em;
   }
-  .year{
-    font-family: gibsonLight;
-    color: #FFFE47;
-    font-size: 16vw;
-    line-height: 1em;
+  .header{
+    font-family: gibsonSemibold;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: $headerColor;
+    font-size: 2.5vw;
+    line-height: 2em;
   }
+  .address{
+    font-family: gibsonRegular;
+    font-size:1.5em;
+    color: $addressColor;
+    line-height: 2em;
+    margin: 0 0 0.5em 0;
 
+    
+  }
 
   &.large-scene{
     .main{
@@ -154,25 +136,24 @@
   }
 
   &.header-scene{
-    // top:70vh;
-    box-sizing:border-box;
     font-family: gibsonLight;
-    width:90%;
-    left:-14%;
+    width:80%;
     text-align: center;
     bottom: 5vw;
-    padding: 0 20%;
+    margin:0 5%;
+    // padding: 0 20%;
     .main{
-      color: #FFFE47;
-      font-size: 1.7vw;
+      color: $textColor;
+      font-size: 1.8vw;
 
       large{
+        color:$headerColor;
         text-transform:uppercase;
         font-family: gibsonRegular; 
         display: block;
-        margin:0.7em 0 0.075em 0;
-        font-size: 9vw;
-        line-height: 1em;
+        // margin:0.7em 0 0.075em 0;
+        font-size: 5vw;
+        line-height: 2em;
       }
       
     }
@@ -193,9 +174,6 @@
   }
 }
 @media only screen and (max-width: 500px) {
-  body {
-    //background-color: lightblue;
-  }
   #outerContainer{
     height:calc(177vw - 25px);
   }
@@ -203,12 +181,12 @@
     margin:80vw auto;
     width:40vw;
     height:2.5vw;
-    border: 1px solid rgba(255, 254, 71, 0.7);
+    border: 1px solid $loaderColor;
     padding: 2px;
     border-radius: 2vw;
     .progress{
       border-radius: 2vw;
-      background-color: rgba(255, 254, 71, 0.7);
+      background-color: $loaderColor;
       width:1%;
       height:100%;
     }
@@ -220,7 +198,7 @@
   .scene{
     margin: auto;
     width:80%;
-    left:10%;
+    left:0%;
     bottom: 10vh;
     .main{
      font-size: 4.3vw;
@@ -244,7 +222,7 @@
     .main{
       font-size: 4.5vw;
       large{
-        font-size: 17vw;
+        font-size: 10vw;
 
       }
       

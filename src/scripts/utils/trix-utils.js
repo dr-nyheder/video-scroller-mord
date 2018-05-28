@@ -89,11 +89,13 @@ let easeOutSine =(t, b, c, d) =>{
     return c * Math.sin(t/d * (Math.PI/2)) + b;
 }
 
-let assetPath = 'assets/';
+let assetPath = 'assets/data/';
+let iconPath = 'assets/images/';
 // let assetPath = '//www.dr.dk/tjenester/visuel/staging/angela-merkel-scroller/assets/';
 // let assetPath = '//www.dr.dk/nyheder/htm/grafik/2017/angela-merkel-scroller/assets/';
 
-let imagePath = 'assets/images/';
-// let imagePath = 'https://downol.dr.dk/download/nyheder/2017/merkel-scroller/';
+// let imagePath = 'assets/images/';
+// let imagePath = 'http://localhost:8888/mobil-web/video-scroller-mord/grafik/images/';
+let imagePath = 'https://downol.dr.dk/download/nyheder/2018/mord-scroller/';
 
-export {assetPath, imagePath, create, select, selectAll, linearInterpolate, normalize, clamp, fetchFile, isTouchSupported, prepath, isIE, addThousandsSeperators, easeInOutSine, easeOutIn, easeInSine, easeOutSine  }
+export {assetPath, imagePath, iconPath, create, select, selectAll, linearInterpolate, normalize, clamp, fetchFile, isTouchSupported, prepath, isIE, addThousandsSeperators, easeInOutSine, easeOutIn, easeInSine, easeOutSine  }

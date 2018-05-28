@@ -2,7 +2,7 @@ const request = require('request')
 const fs = require('fs');
 
 const sheets = 1;
-const path = './src/assets/';
+const path = './src/assets/data/';
 
 function reformatData(entries) {
     const data = [];

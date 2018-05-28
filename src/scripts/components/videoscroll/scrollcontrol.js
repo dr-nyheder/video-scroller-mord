@@ -57,7 +57,7 @@ export default class ScrollControl{
 		}
 
 		let animateText = (e, el)=>{
-			let maxMove = 24;
+			let maxMove = 30;
 			let fadeInStop = 0.2;
 			let fadeOutStart = 0.8;
 			let opacity = 1;
@@ -96,6 +96,7 @@ export default class ScrollControl{
 			scrollTimeout = setTimeout(()=>{
 				console.log('scrolling stopped');
 				this.video.showHighRes();
+				// controller.scrollTo(ev.scrollPos + 100);
 			}, 150)
 
 		});
