@@ -96,14 +96,14 @@ $mobile-query:'only screen and (max-width: 500px)';
   }
 }
 .scene {
-  background:rgba(0, 0, 0, 0.75);
+  background:rgba(0, 0, 0, 0.6);
   width: 70%;
   opacity: 0;
   //height:10%;
   position: absolute;
   text-align: center;
   //bottom: -25px;
-  padding: 5% 5% 5% 5%;
+  padding: 3% 2% 3.5% 2%;
   margin: 0 15%;
   bottom: -10vh;
   // left:10%;
@@ -119,7 +119,7 @@ $mobile-query:'only screen and (max-width: 500px)';
   }      
   .icon{
     margin:0 auto 1.2em auto;
-    width:10%;
+    width:8%;
     img{
       width:100%;
     }
@@ -129,7 +129,7 @@ $mobile-query:'only screen and (max-width: 500px)';
   }
   .header{
     font-family: gibsonSemibold;
-    text-transform: uppercase;
+    // text-transform: uppercase;
     // white-space: nowrap;
     color: $headerColor;
     font-size: 2.5vw;
@@ -153,8 +153,9 @@ $mobile-query:'only screen and (max-width: 500px)';
   }
   .main{
     color: $textColor;
-    font-size: 1.8vw;
-    line-height: 1.5em;
+    font-size: 1.5vw;
+    line-height: 1.4em;
+    padding: 0 10%;
     @media #{$mobile-query} {
       font-size: 3.6vw;
       line-height: 1.4em;
@@ -172,7 +173,7 @@ $mobile-query:'only screen and (max-width: 500px)';
   }
   
   &.header-scene{
-    font-family: gibsonLight;
+    font-family: gibsonRegular;
     width:80%;
     text-align: center;
     bottom: 5vw;
@@ -185,26 +186,27 @@ $mobile-query:'only screen and (max-width: 500px)';
       bottom:10vw;
     }
     .icon{
-      width:13%;
+      width:8%;
       @media #{$mobile-query}{
         width:30%;
       }
     }
     .main{
-      color: $textColor;
-      font-size: 1.8vw;
+      color: $addressColor;
+      font-size: 1.5vw;
+      padding: 0 7%;
       
       large{
-        color:$headerColor;
-        text-transform:uppercase;
-        font-family: gibsonRegular; 
+        color:white;
+        // text-transform:uppercase;
+        font-family: gibsonSemibold; 
         display: block;
         margin:0 0 0.2em 0;
         font-size: 5vw;
         line-height: 1.2em;
       }
       @media #{$mobile-query} {
-        font-size: 4.5vw;
+        font-size: 3.6vw;
         large{
           margin:0 0 0.7em 0;
           font-size: 10vw;
@@ -216,32 +218,18 @@ $mobile-query:'only screen and (max-width: 500px)';
     }
   }
   .arrow{
-    margin:0;
+    margin:2% 0 0 0;
     svg{
       width:2.5vw;
       height:3vw;
     }
-  }
-}
-//  -----------------------------------------------------------------------
-// The old fold
-//  -----------------------------------------------------------------------
-
-@media only screen and (max-width: 500px) {
-  
-  .scene{
-    
-    &.header-scene{
-      .main{
-        
-      }
-    }
-    .arrow{
-      margin:0;
+    @media #{$mobile-query} {
+      margin:6% 0 0 0;
       svg{
         width:8vw;
         height:10vw;
       }
+
     }
   }
 }

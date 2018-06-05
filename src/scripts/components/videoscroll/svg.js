@@ -5,7 +5,7 @@ function scrollarrow(){
 	 x="0px" y="0px" width="80px" height="100px" viewBox="0 0 80 100" style="enable-background:new 0 0 80 100;"
 	 xml:space="preserve">
 <style type="text/css">
-	.stA{fill:#d01403;}
+	.stA{fill:#FFFFFF;}
 </style>
 <defs>
 </defs>
