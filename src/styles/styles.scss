@@ -2,6 +2,7 @@ $loaderColor:rgba(255, 71, 71, 0.7);
 $headerColor:#d01403;
 $addressColor:#FFC8C8;
 $textColor:#FFFFFF;
+$mobile-query:'only screen and (max-width: 500px)';
 .debug-counter{
   position: fixed;
   top:50px;
@@ -20,16 +21,9 @@ $textColor:#FFFFFF;
   width:100%;
   overflow-y:scroll;
   -webkit-overflow-scrolling: touch;
-}
-#toggle-audio {
-  position: fixed;
-  right: 20px;
-  z-index: 200;
-  color: #fff;
-  display: block;
-  font-size: 4vw;
-  text-align: center;
-  text-decoration: none;
+  @media  #{$mobile-query} {
+    height:calc(177vw - 25px);
+  }    
 }
 .video-container {
   width: 100%;
@@ -57,11 +51,25 @@ $textColor:#FFFFFF;
   border: 1px solid $loaderColor;
   padding: 2px;
   border-radius: 1vw;
+  @media  #{$mobile-query} {
+    margin:80vw auto;
+    width:40vw;
+    height:2.5vw;
+    border: 1px solid $loaderColor;
+    padding: 2px;
+    border-radius: 2vw;
+  }
   .progress{
     border-radius: 1vw;
     background-color: $loaderColor;
     width:1%;
     height:100%;
+    @media  #{$mobile-query} {
+      border-radius: 2vw;
+      background-color: $loaderColor;
+      width:1%;
+      height:100%;
+    }
   }
 }
 .jump-trigger{
@@ -83,10 +91,12 @@ $textColor:#FFFFFF;
   position: fixed;
   pointer-events: none;
   opacity: 1 !important;
-
+  @media  #{$mobile-query} {
+    max-height: calc(177vw - 25px);
+  }
 }
 .scene {
-  background:rgba(0, 0, 0, 0.8);
+  background:rgba(0, 0, 0, 0.75);
   width: 70%;
   opacity: 0;
   //height:10%;
@@ -94,29 +104,41 @@ $textColor:#FFFFFF;
   text-align: center;
   //bottom: -25px;
   padding: 5% 5% 5% 5%;
-  margin: 0 10%;
+  margin: 0 15%;
   bottom: -10vh;
   // left:10%;
   font-family: gibsonRegular;
+  box-sizing:border-box;
+  
+  @media #{$mobile-query} {
+    padding: 7% 7% 7% 7%;
+    margin: 0 5%;
+    width:90%;
+    left:0%;  
+    bottom: 2.5vh;
+  }      
   .icon{
     margin:0 auto 1.2em auto;
     width:10%;
     img{
       width:100%;
     }
-  }
-  .main{
-    color: $textColor;
-    font-size: 1.8vw;
-    line-height: 1.5em;
+    @media #{$mobile-query} {
+      width:22.5%;
+    }
   }
   .header{
     font-family: gibsonSemibold;
     text-transform: uppercase;
-    white-space: nowrap;
+    // white-space: nowrap;
     color: $headerColor;
     font-size: 2.5vw;
-    line-height: 2em;
+    line-height: 1.4em;
+    @media #{$mobile-query}{
+      font-size: 4.25vw;
+      // white-space: normal;
+      line-height: 1.3em;
+    }
   }
   .address{
     font-family: gibsonRegular;
@@ -124,36 +146,71 @@ $textColor:#FFFFFF;
     color: $addressColor;
     line-height: 2em;
     margin: 0 0 0.5em 0;
-
-    
+    @media #{$mobile-query} {
+      font-size: 3.6vw;
+      line-height: 3em;
+    }
   }
-
+  .main{
+    color: $textColor;
+    font-size: 1.8vw;
+    line-height: 1.5em;
+    @media #{$mobile-query} {
+      font-size: 3.6vw;
+      line-height: 1.4em;
+    }
+  }
+  
   &.large-scene{
     .main{
       font-size: 5vw;
       line-height:1.0em;
+      @media #{$mobile-query} {
+        font-size:9vw;
+      }
     }
   }
-
+  
   &.header-scene{
     font-family: gibsonLight;
     width:80%;
     text-align: center;
     bottom: 5vw;
-    margin:0 5%;
-    // padding: 0 20%;
+    margin:0 10%;
+    
+    
+    @media #{$mobile-query} {
+      width:90%;
+      margin:0 5%;
+      bottom:10vw;
+    }
+    .icon{
+      width:13%;
+      @media #{$mobile-query}{
+        width:30%;
+      }
+    }
     .main{
       color: $textColor;
       font-size: 1.8vw;
-
+      
       large{
         color:$headerColor;
         text-transform:uppercase;
         font-family: gibsonRegular; 
         display: block;
-        // margin:0.7em 0 0.075em 0;
+        margin:0 0 0.2em 0;
         font-size: 5vw;
-        line-height: 2em;
+        line-height: 1.2em;
+      }
+      @media #{$mobile-query} {
+        font-size: 4.5vw;
+        large{
+          margin:0 0 0.7em 0;
+          font-size: 10vw;
+          
+        }
+
       }
       
     }
@@ -165,87 +222,26 @@ $textColor:#FFFFFF;
       height:3vw;
     }
   }
-  .flag{
-    margin:0;
-    svg{
-      width:6vw;
-      height:10vw;
-    }
-  }
 }
+//  -----------------------------------------------------------------------
+// The old fold
+//  -----------------------------------------------------------------------
+
 @media only screen and (max-width: 500px) {
-  #outerContainer{
-    height:calc(177vw - 25px);
-  }
-  .loader{
-    margin:80vw auto;
-    width:40vw;
-    height:2.5vw;
-    border: 1px solid $loaderColor;
-    padding: 2px;
-    border-radius: 2vw;
-    .progress{
-      border-radius: 2vw;
-      background-color: $loaderColor;
-      width:1%;
-      height:100%;
-    }
-  }
-
-  #scenes{
-    max-height: calc(177vw - 25px);
-  }
+  
   .scene{
-    margin: auto;
-    width:80%;
-    left:0%;
-    bottom: 10vh;
-    .main{
-     font-size: 4.3vw;
-     line-height: 1.3em;
-   }
-   .year{
-    font-size: 22vw;
-    // margin-left:15vw;
-  }
-  &.large-scene{
-    p{
-      font-size: 9vw;
-    }
-  }
-
-  &.header-scene{
-    width:90%;
-    left:5%;
-    bottom:10vw;
-    padding:0 2%;
-    .main{
-      font-size: 4.5vw;
-      large{
-        font-size: 10vw;
-
+    
+    &.header-scene{
+      .main{
+        
       }
-      
+    }
+    .arrow{
+      margin:0;
+      svg{
+        width:8vw;
+        height:10vw;
+      }
     }
   }
-  .arrow{
-    margin:0;
-    svg{
-      width:8vw;
-      height:10vw;
-    }
-  }
-  .flag{
-    display:none;
-    position:absolute;
-    top:0;
-    left:2.5vw;
-    // margin:0 4vw 0 0;
-    svg{
-      width:18vw;
-      height:19vw;
-    }
-  }
-
-}
 }

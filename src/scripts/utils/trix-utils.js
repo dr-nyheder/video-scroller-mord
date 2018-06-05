@@ -96,6 +96,6 @@ let iconPath = 'assets/images/';
 
 // let imagePath = 'assets/images/';
 // let imagePath = 'http://localhost:8888/mobil-web/video-scroller-mord/grafik/images/';
-let imagePath = 'https://downol.dr.dk/download/nyheder/2018/mord-scroller/';
+let imagePath = 'https://downol.dr.dk/download/nyheder/2018/mord-scroller/images/';
 
 export {assetPath, imagePath, iconPath, create, select, selectAll, linearInterpolate, normalize, clamp, fetchFile, isTouchSupported, prepath, isIE, addThousandsSeperators, easeInOutSine, easeOutIn, easeInSine, easeOutSine  }
