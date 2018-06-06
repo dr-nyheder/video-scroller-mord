@@ -1,4 +1,6 @@
 let config = {
+    stagingFolder:'/Volumes/staging/',
+    deployFolder:'/Volumes/netdoks/Holmbladsgaderuten/',
     local: {
         DEBUGGING:true,
         ASSETS_PATH:JSON.stringify('assets/'),
@@ -11,7 +13,7 @@ let config = {
     },
     deploy: {
         DEBUGGING:false,
-        ASSETS_PATH:JSON.stringify('https://www.dr.dk/nyheder/htm/grafik/2018/video-scroller-mord/assets/'),
+        ASSETS_PATH:JSON.stringify('https://www.dr.dk/tjenester/netdoks/Holmbladsgaderuten/video-scroller-mord/assets/'),
         SCROLL_IMAGE_PATH:JSON.stringify('https://downol.dr.dk/download/nyheder/2018/mord-scroller/images/')
     }
 }

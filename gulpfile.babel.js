@@ -22,26 +22,20 @@ gulp.task('default', ['watch'], () => {
 
 gulp.task('stage', ['stage:clean','assets:dev', 'index:dev'], () => {
 
-//   const pathArray = __dirname.split('/');
-//   const folder = pathArray[pathArray.length -1];
-
   return gulp.src('dev/**/*')
-  .pipe(gulp.dest('/Volumes/staging/' + folder + ''));
+  .pipe(gulp.dest(config.stagingFolder + folder + ''));
 
 })
 gulp.task('deploy', ['dist:clean','assets:dist', 'index:dist'], () => {
 
-//   const pathArray = __dirname.split('/');
-//   const folder = pathArray[pathArray.length -1];
-  const path = '/Volumes/2018/';
-  const msg = 'Vil du deploye "' + folder + '" til produktion i mappen ' + path + '?'
+  const msg = 'Vil du deploye "' + folder + '" til produktion i mappen ' + config.deployFolder + '?'
 
-  return gulp.src('dist/**/*')
+  return gulp.src(['dist/**/*', 'src/webdok.html'])
   .pipe(prompt.confirm({
         message: msg,
         default: true
   }))
-  .pipe(gulp.dest(path + folder + ''));
+  .pipe(gulp.dest(config.deployFolder + folder + ''));
 
 })
 
@@ -52,7 +46,7 @@ gulp.task('assets:dev', () => {
   .pipe(gulp.dest('dev/assets'))
 })
 gulp.task('stage:clean', () =>{
-    gulp.src('/Volumes/staging/' + folder, {read:false})
+    gulp.src(config.stagingFolder + folder, {read:false})
     .pipe(clean({force: true}));
 })
    
@@ -96,7 +90,7 @@ gulp.task('assets:dist', () => {
 
 })
 gulp.task('dist:clean', () =>{
-    gulp.src('/Volumes/2018/' + folder, {read:false})
+    gulp.src(config.deployFolder + folder, {read:false})
     .pipe(clean({force: true}));
 })
 
