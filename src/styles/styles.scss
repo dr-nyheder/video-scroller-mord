@@ -160,6 +160,10 @@ $mobile-query:'only screen and (max-width: 500px)';
       font-size: 3.6vw;
       line-height: 1.4em;
     }
+    a{
+      pointer-events:auto;
+      color:$textColor;
+    }
   }
   
   &.large-scene{
