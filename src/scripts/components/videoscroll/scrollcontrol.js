@@ -94,7 +94,7 @@ export default class ScrollControl{
 				clearTimeout(scrollTimeout);
 			}
 			scrollTimeout = setTimeout(()=>{
-				console.log('scrolling stopped');
+				// console.log('scrolling stopped');
 				this.video.showHighRes();
 				// controller.scrollTo(ev.scrollPos + 100);
 			}, 150)

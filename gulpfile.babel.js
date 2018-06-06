@@ -10,6 +10,7 @@ import webpack from 'webpack';
 import webpackConfig from './webpack.config.babel';
 import webpackDevConfig from './webpack.dev.config.babel';
 import WebpackDevServer from 'webpack-dev-server';
+import config from './config';
 
 
 const pathArray = __dirname.split('/');
@@ -64,7 +65,9 @@ gulp.task('index:dev', ['webpack:dev'], function () {
 
 gulp.task('webpack:dev', ['babel:dev'], (callback) =>{
     const myConfig = Object.create(webpackDevConfig);
-
+    myConfig.plugins = [
+        new webpack.DefinePlugin(config.staging)
+    ];
     webpack(myConfig, (err, stats)=>{
         if(err) throw new gutil.PluginError('webpack', err);
         gutil.log('[webpack]', stats.toString({
@@ -108,6 +111,7 @@ gulp.task('webpack:dist', ['babel:dist'], (callback) =>{
     const myConfig = Object.create(webpackConfig);
     myConfig.plugins = [
         // new webpack.optimize.DedupePlugin(),
+        new webpack.DefinePlugin(config.deploy),
         new webpack.optimize.UglifyJsPlugin()
     ];
 
@@ -136,6 +140,9 @@ gulp.task('babel:dist', () => {
 gulp.task('webpack-dev-server', ['index:dev'], function(callback) {
 
     const myConfig = Object.create(webpackDevConfig);
+    myConfig.plugins = [
+        new webpack.DefinePlugin(config.local)
+    ];
 
     // Start a webpack-dev-server
     new WebpackDevServer(webpack(myConfig), {

@@ -1,10 +1,8 @@
-import {create, select, normalize, clamp, linearInterpolate, imagePath} from '../../utils/trix-utils';
+import {create, select, normalize, clamp, linearInterpolate} from '../../utils/trix-utils';
 
 export default class ImageVideo {
     constructor(videoSetup) {
         this.setup = videoSetup;
-        this.debug = true;
-        //let videoContainer = select('#videoContainer');
         let imageContainer = select('#image-container');
 
         this.loader = create('div', imageContainer, 'loader');
@@ -12,7 +10,7 @@ export default class ImageVideo {
 
         this.imageEl = create('img', imageContainer, 'img-tag');
 
-        if(this.debug){
+        if(DEBUGGING){
             this.debugCounter = create('div', select('#outerContainer'), 'debug-counter');
         }
 
@@ -46,7 +44,7 @@ export default class ImageVideo {
         //sconsole.log('set video time', time);
 
         let norm = normalize(time, 0, this.setup.frameCount);
-        if(this.debug){
+        if(DEBUGGING){
             let debugTime = linearInterpolate(norm, 0, this.setup.videoDuration);
             let pre = '';
             if(debugTime < 10) pre = '0';
@@ -96,8 +94,8 @@ export default class ImageVideo {
 
             let highresName = highPre.substr(0, highPre.length - post.length) + post + '.jpg';
             // this.images[i].load('//www.dr.dk/tjenester/visuel/staging/drn-primeminister-scroller/' + file.path+name);
-            this.images[i].highres = imagePath + file.highresPath + highresName;
-            this.images[i].load(imagePath + file.path+name);
+            this.images[i].highres = SCROLL_IMAGE_PATH + file.highresPath + highresName;
+            this.images[i].load(SCROLL_IMAGE_PATH + file.path+name);
         }
     }
 

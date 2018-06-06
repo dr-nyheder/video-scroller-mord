@@ -1,4 +1,4 @@
-import { select, selectAll, fetchFile, assetPath, iconPath} from '../../utils/trix-utils';
+import { select, selectAll, fetchFile} from '../../utils/trix-utils';
 import {scrollarrow, flag} from './svg';
 
 let counter = 1;
@@ -12,7 +12,7 @@ export default class DomGenerator {
 
     build(file, callback) {
 
-        const filePath = assetPath + file;
+        const filePath = ASSETS_PATH + 'data/' +file;
         fetchFile(filePath, (data) => {
             const json = JSON.parse(data);
             this.buildDOM(json);
@@ -43,8 +43,7 @@ export default class DomGenerator {
             extraClass = ' large-scene'
         }
         const arrow = (sceneObject.type === 'Header') ? `<p class="arrow">${scrollarrow()}</p>` : ``;
-        const icon = (sceneObject.picture !== '') ? `<div class="icon"><img src="${iconPath}${sceneObject.picture}"></div>` : ``;
-        console.log('icon:', icon, sceneObject.picture === '')
+        const icon = (sceneObject.picture !== '') ? `<div class="icon"><img src="${ASSETS_PATH + 'images/'}${sceneObject.picture}"></div>` : ``;
         const header = (sceneObject.header !== undefined) ? `<div class="header">${sceneObject.header}</div>` : ``;
         const address = (sceneObject.address !== undefined) ? `<div class="address">${sceneObject.address}</div>` : ``;
 
