@@ -45,12 +45,7 @@ export default class ScrollControl{
 
 			})
 			.on('progress', (e) => {
-				/*				
-				console.log(e.scrollDirection);
-				if(e.scrollDirectio == "REVERSE"){
-					e.preventDefault();
-				}
-*/				animateText(e, element);
+				animateText(e, element);
 
 			})
 			.addTo(controller);
@@ -78,11 +73,6 @@ export default class ScrollControl{
 
 		}
 
-/*		let endScene = new ScrollMagic.Scene({
-			duration: window.innerHeight * 0.75,
-			offset: this.scrollduration
-		}).addTo(controller);
-*/
 		let scrollTimeout = null;
 		let counter = new ScrollMagic.Scene({
 			duration: this.scrollduration

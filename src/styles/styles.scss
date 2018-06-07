@@ -138,20 +138,21 @@ $mobile-query:'only screen and (max-width: 500px)';
     line-height: 1.4em;
     margin-bottom:0;
     @media #{$mobile-query}{
-      font-size: 5vw;
+      font-size: 6vw;
       // white-space: normal;
       line-height: 1.3em;
     }
   }
   .address{
     font-family: gibsonRegular;
-    font-size:1.5em;
+    font-size:2vw;
     color: $addressColor;
     line-height: 2em;
     margin: 0 0 0.5em 0;
     @media #{$mobile-query} {
-      font-size: 4vw;
-      line-height: 3em;
+      margin: 0.5em 0 0.7em 0;
+      font-size: 4.3vw;
+      // line-height: 3em;
     }
   }
   .main{
@@ -161,7 +162,7 @@ $mobile-query:'only screen and (max-width: 500px)';
     padding: 0 10%;
     @media #{$mobile-query} {
       padding: 0 0;
-      font-size: 4vw;
+      font-size: 4.3vw;
       line-height: 1.4em;
     }
     a{
@@ -214,7 +215,7 @@ $mobile-query:'only screen and (max-width: 500px)';
         line-height: 1.2em;
       }
       @media #{$mobile-query} {
-        font-size: 4vw;
+        font-size: 4.5vw;
         padding: 0 0;
         large{
           margin:0 0 0.7em 0;
