@@ -20,7 +20,7 @@ export default class ImageVideo {
 
         this.loadedImages = 0;
 
-        this.preloadThreshHold = 400;
+        this.preloadThreshHold = 300;
 
         this.currentFrame = -1;
 

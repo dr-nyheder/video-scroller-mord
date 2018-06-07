@@ -30,7 +30,7 @@ function init() {
         scroller.setupScroll(vid, scenes);
         //au.initAudio();
     });
-
+    // let grabber = create('div', oContainer.parentElement, 'grabber-left');
 }
 function getVideo() {
     oContainer = select('#outerContainer');
