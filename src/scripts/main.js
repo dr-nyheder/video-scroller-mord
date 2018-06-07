@@ -36,6 +36,10 @@ function getVideo() {
     oContainer = select('#outerContainer');
     const minister = oContainer.dataset.contentname;
 
+    let query = window.matchMedia("(min-width: 500px)");
+
+    console.log('query matches:', query.matches);
+
     videoSetup = {
         frameCount : parseInt(config[minister].frameCount),
         frameRate : parseInt(config[minister].frameRate),
@@ -43,15 +47,24 @@ function getVideo() {
     }
     videoSetup.videoDuration = videoSetup.frameCount / videoSetup.frameRate;
 
-    if (window.innerWidth > videoBreakpoint) {
-        videoSetup.videoSize = 'large';
-    } else {
-        videoSetup.videoSize = 'small';
-    }
+    let switchFunction = (large)=>{
+        console.log('large:', large);
+        if(large){
+			vid.setup.videoSize = 'large';
+        }else{
+            vid.setup.videoSize = 'small';
+        }
+        vid.loadImages();
+    };
 
+    videoSetup.videoSize = (query.matches) ? 'large' : 'small';
     vid = new ImageVideo(videoSetup);
     vid.loadImages(onImageLoad);
-    //vid.events.addEventListener('imagesloaded', onImageLoad);
+
+    let sizeListener = function(query){
+        switchFunction(query.matches);
+    }
+    query.addListener(sizeListener);
 
 }
 function onImageLoad() {
@@ -62,7 +75,7 @@ function ready(){
     console.log('ready');
      setTimeout(function() {
         getVideo();
-    }, 10)
+    }, 100)
 }   
 
 if (document.readyState == 'loading') {

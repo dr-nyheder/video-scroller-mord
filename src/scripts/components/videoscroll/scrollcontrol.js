@@ -18,8 +18,6 @@ export default class ScrollControl{
 
 		let oContainer = select('#outerContainer');
 		const sContainer = select('#videoScrollContainer');
-		window.addEventListener('resize', this.checkSizeChange.bind(this));
-		//this.checkSizeChange();
 
 		const controller = new ScrollMagic.Controller({
 			container: oContainer,
@@ -104,21 +102,6 @@ export default class ScrollControl{
 		let norm = normalize(pos, 0, this.scrollduration);
 		let scrollTime = (this.video.setup.frameCount * norm);
 		this.video.setVideoTime(scrollTime);
-	}
-	checkSizeChange() {
-		console.log('size change');
-
-		let newWidth = window.innerWidth;
-		if (newWidth > this.savedWidth && newWidth > this.videoBreakpoint && this.video.setup.videoSize === 'small') {
-			console.log('go large');
-			this.video.setup.videoSize = 'large';
-			this.video.loadImages();
-		} else if (newWidth < this.savedWidth && newWidth < this.videoBreakpoint && this.video.setup.videoSize === 'large') {
-			console.log('go small');
-			this.video.setup.videoSize = 'small';
-			this.video.loadImages();
-		}
-		this.savedWidth = newWidth;
 	}
 
 }
