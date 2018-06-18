@@ -184,6 +184,7 @@ $mobile-query:'only screen and (max-width: 500px)';
     a{
       pointer-events:auto;
       color:$textColor;
+      text-decoration: underline;
     }
   }
   
